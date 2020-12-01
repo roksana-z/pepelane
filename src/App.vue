@@ -3,37 +3,33 @@
     <body>
       <Header />
       <router-view />
-      
     </body>
   </div>
 </template>
 
 <script>
-import Header from './components/header.vue';
-import { getVehicles } from './assets/data/request.js';
-
-
-
+import Header from './components/header.vue'
+import { getVehicles } from './assets/data/request.js'
 
 export default {
   components: {
-    Header,
-
+    Header
   },
   methods: {
-    addVehicle (vehicle) {
+    addVehicle(vehicle) {
       this.$store.commit('ADD_VEHICLE', vehicle)
     }
   },
-    beforeCreate () {
-      this.$store.getVehicles
-      getVehicles().then(data => {
-       data.forEach(vehicle => {
-         this.addVehicle(vehicle);
-       })})
-       .catch(error => console.log(error))
+  beforeCreate() {
+    this.$store.getVehicles
+    getVehicles()
+      .then(data => {
+        data.forEach(vehicle => {
+          this.addVehicle(vehicle)
+        })
+      })
+      .catch(error => console.log(error))
   }
-
 }
 </script>
 
@@ -41,12 +37,12 @@ export default {
 @import './assets/font/stylesheet.css';
 
 body {
-    font-family: 'Codec Pro';
-    font-weight: 300;
-    font-size: 12px;
-    font-style: normal;
-    line-height: 20px;
-    color: $dark-gray;
+  font-family: 'Codec Pro';
+  font-weight: 300;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 20px;
+  color: $dark-gray;
 }
 
 a {

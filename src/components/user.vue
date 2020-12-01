@@ -29,10 +29,8 @@ export default {}
   .user {
     width: fit-content;
   }
-    .user__name {
-      display: none;
-    }
+  .user__name {
+    display: none;
   }
-
-
+}
 </style>
