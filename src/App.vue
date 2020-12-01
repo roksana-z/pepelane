@@ -1,102 +1,117 @@
 <template>
   <div id="app">
     <body>
-        <Header />
-        <router-view />
+      <Header />
+      <router-view />
+      
     </body>
   </div>
 </template>
 
-
 <script>
-import Header from  './components/header.vue';
+import Header from './components/header.vue';
+import { getVehicles } from './assets/data/request.js';
+
+
+
 
 export default {
   components: {
     Header,
+
+  },
+  methods: {
+    addVehicle (vehicle) {
+      this.$store.commit('ADD_VEHICLE', vehicle)
+    }
+  },
+    beforeCreate () {
+      this.$store.getVehicles
+      getVehicles().then(data => {
+       data.forEach(vehicle => {
+         this.addVehicle(vehicle);
+       })})
+       .catch(error => console.log(error))
   }
+
 }
 </script>
 
-
 <style lang="scss">
+@import './assets/font/stylesheet.css';
 
+body {
+    font-family: 'Codec Pro';
+    font-weight: 300;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 20px;
+    color: $dark-gray;
+}
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 ul {
-    padding: 0;
+  padding: 0;
 }
 
 .container {
-    width: calc(100% - 30px);
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  width: calc(100% - 30px);
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .max-width {
-    max-width: 1920px;
+  max-width: 1920px;
 }
 
 .main-wrapper {
-    padding: 56px 5%;
-    background-color: $light-gray;
-    border-radius: 16px;
-}
-
-.filter-block {
-    display: flex;
-    justify-content: space-between;
-    &__title-wrapper {
-        display: flex;
-        align-items: center;
-        font-weight: 300;
-        font-style: normal;
-        font-size: 40px;
-        width: 26%;
-    }
-    &__btn {
-        width: 48px;
-        background-color: $dark-blue;
-    }
-    &__rent {
-        color: $midnight-blue;
-        margin-right: 5%;
-    }
-    &__whatever {
-        color: $blue;
-    }
+  padding: 56px 5%;
+  background-color: $light-gray;
+  border-radius: 16px;
 }
 
 .base-button {
-    height: 48px;
-    border-radius: 16px;
-    color: white;
-    border-style: none;
-    border-width: 0;
+  height: 48px;
+  border-radius: 16px;
+  color: white;
+  border-style: none;
+  border-width: 0;
 }
 
 .card-addition {
-    display: flex;
-    align-items: center;
-    width: 13%;
-    &__text {
-        font-size: 20px;
-        color: $blue;
-        margin-right: 13%;
-    }
+  display: flex;
+  align-items: center;
+  &__text {
+    font-size: 20px;
+    color: $blue;
+    margin-right: 13%;
+  }
 }
 
 .cards {
-    display: grid;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    grid-template-columns: repeat(3, 31.5%);
-    grid-auto-rows: repeat(4, auto);
-    grid-gap: 32px 3%;
+  display: grid;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: repeat(4, auto);
+  grid-gap: 32px 3%;
+}
+
+@include for-tablet-landscape-up {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include for-phone-only {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+  }
 }
 </style>
