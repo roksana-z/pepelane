@@ -3,13 +3,18 @@
     <span
       >Rent for <span class="rent-box__price">{{ price }} $/h</span></span
     >
-    <button class="base-button rent-box__btn">Rent now</button>
+    <BaseButton class="rent-box__btn">Rent now</BaseButton>
   </div>
 </template>
 
 <script>
+import BaseButton from './base-button'
+
 export default {
-  props: ['price']
+  props: ['price'],
+  components: {
+    BaseButton
+  }
 }
 </script>
 
@@ -29,10 +34,14 @@ export default {
   &__btn {
     width: 25%;
     background-color: $blue;
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
   }
 }
 
-@include for-tablet-landscape-up {
+@include for-tablet {
   .rent-box {
     position: sticky;
     bottom: 0;

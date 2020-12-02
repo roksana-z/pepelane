@@ -53,6 +53,10 @@ ul {
   padding: 0;
 }
 
+.active {
+  color: $blue !important;
+}
+
 .container {
   width: calc(100% - 30px);
   padding-right: 15px;
@@ -79,13 +83,22 @@ ul {
   border-width: 0;
 }
 
+.card-page {
+  &__sub-title {
+    margin: 32px 0;
+    font-size: 24px;
+    color: $midnight-blue;
+    font-weight: bold;
+  }
+}
+
 .card-addition {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   &__text {
     font-size: 20px;
     color: $blue;
-    margin-right: 13%;
   }
 }
 
@@ -98,7 +111,7 @@ ul {
   grid-gap: 32px 3%;
 }
 
-@include for-tablet-landscape-up {
+@include for-tablet {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }

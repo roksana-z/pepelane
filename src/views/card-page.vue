@@ -14,8 +14,8 @@
           ><li class="menu__item">Rent terms</li></router-link
         >
       </ul>
-      <router-view></router-view>
-      <RentBox v-bind:price="card.rent" />
+      <router-view class="content"></router-view>
+      <RentBox v-bind:price="card.rent" class="rent" />
     </div>
   </div>
 </template>
@@ -25,13 +25,10 @@ import RentBox from '../components/rent-box.vue'
 
 export default {
   props: ['id'],
-  data() {
-    return {
-      card: {}
+  computed: {
+    card() {
+      return this.$store.getters.getCardById(this.id)
     }
-  },
-  beforeMount() {
-    this.card = this.$store.getters.getCardById(this.id)
   },
   components: {
     RentBox
@@ -46,12 +43,13 @@ export default {
   font-size: 14px;
   &__content {
     display: flex;
-    align-content: space-between;
+    height: 604px;
     flex-direction: column;
   }
   &__img {
     height: 700px;
     width: 55%;
+    max-width: 712px;
     margin-right: 5%;
     border-radius: 24px;
   }
@@ -59,12 +57,6 @@ export default {
     font-size: 40px;
     color: $midnight-blue;
     font-weight: normal;
-  }
-  &__sub-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: $midnight-blue;
-    margin: 32px 0;
   }
   &__team-short-desc {
     margin: 32px 0 49px 0;
@@ -85,6 +77,14 @@ export default {
   }
 }
 
+.rent {
+  flex: 0 0 auto;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
 .menu {
   display: flex;
   list-style: none;
@@ -101,17 +101,12 @@ export default {
   }
 }
 
-@include for-desktop-up {
+@include for-tablet {
   .card-page__img {
-    width: 60%;
-    height: 332px;
-  }
-}
-
-@include for-tablet-landscape-up {
-  .card-page__img {
-    width: 100%;
     margin-right: 0px;
+    width: auto;
+    height: 332px;
+    min-height: auto;
   }
   .card-page {
     flex-direction: column;

@@ -1,8 +1,8 @@
 .<template>
   <div class="team">
-    <p class="card-page__short-desc">
+    <span class="card-page__short-desc">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-    </p>
+    </span>
     <p class="card-page__sub-title">Qualified specialists</p>
     <div class="specialists">
       <div class="specialist">
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <p class="card-page__team-short-desc">
+    <p>
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit. Exercitation veniam
       consequat sunt nostrud amet.
@@ -62,10 +62,6 @@ export default {}
 
 .card-page__short-desc {
   margin-bottom: 32px;
-}
-
-.card-page__team-short-desc {
-  margin-bottom: 49px;
 }
 
 .card-page__sub-title {

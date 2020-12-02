@@ -1,5 +1,5 @@
 <template>
-  <a class="user header__user" href="#">
+  <a class="user" href="#">
     <span class="user__name">Bessie Cooper</span>
     <img class="user__img" src="../assets/images/user.png" alt="user" />
   </a>
@@ -14,7 +14,6 @@ export default {}
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc((100% - 113px) * 32 / 100);
   &__name {
     color: $midnight-blue;
     size: 16px;
@@ -25,10 +24,7 @@ export default {}
   }
 }
 
-@include for-tablet-landscape-up {
-  .user {
-    width: fit-content;
-  }
+@include for-tablet {
   .user__name {
     display: none;
   }

@@ -24,6 +24,9 @@ export default {
   background-color: $white;
   padding: 24px 6%;
   border-radius: 16px;
+  &:hover {
+    opacity: 0.7;
+  }
 
   &__content {
     display: flex;
@@ -50,7 +53,7 @@ export default {
   }
 }
 
-@include for-max-phone {
+@include for-phone-landscape {
   .card__conten {
     justify-content: center;
   }

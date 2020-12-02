@@ -8,13 +8,9 @@
         World's first affordable airsharing
       </div>
       <div class="header__right">
-        <a class="mod header__mod" href="#">
-          <img
-            class="mod__img icon"
-            src="../assets/images/NightMo.png"
-            alt="moon"
-          />
-          <span class="mod__text">Night mod</span>
+        <a class="mod header__mode" href="#">
+          <img src="../assets/images/NightMo.png" alt="moon" />
+          <span class="mod__text">Night mode</span>
         </a>
         <a class="header__chat" href="#">
           <img src="../assets/images/chat.png" alt="chat" />
@@ -22,7 +18,7 @@
         <a class="header__notification" href="#">
           <img src="../assets/images/notification.png" alt="notification" />
         </a>
-        <User />
+        <User class="header__user" />
       </div>
     </div>
   </header>
@@ -64,24 +60,29 @@ export default {
     width: 13%;
     min-width: 113px;
   }
+  &__mode {
+    min-width: 122px;
+    margin-right: 20%;
+    color: $dark-gray;
+  }
   &__chat {
     margin-right: 2%;
   }
   &__notification {
     margin-right: 5%;
   }
+  &__user {
+    width: calc((100% - 113px) * 32 / 100);
+  }
 }
 
 .mod {
   display: flex;
   align-items: center;
-  min-width: 122px;
   justify-content: space-between;
-  margin-right: 20%;
-  color: $dark-gray;
 }
 
-@include for-tablet-landscape-up {
+@include for-tablet {
   .header {
     &__short-desc {
       margin-right: 2%;
@@ -90,31 +91,27 @@ export default {
       width: calc((100% - 113px) * 60 / 100);
       justify-content: flex-end;
     }
-    &__logo-wrapper {
+    &__mode {
+      margin-right: 1%;
+      display: block;
+      min-width: fit-content;
     }
-    &__notification {
+    &__user {
+      width: fit-content;
     }
   }
   .mod {
-    margin-right: 1%;
-    min-width: fit-content;
-    display: block;
     &__text {
       display: none;
     }
   }
 }
 
-//    @include for-tablet-landscape-up  {
-//     .header {
-//       width: 90%;
-//       justify-content: space-between;
-//       &__chat, &__notification, &__mod, &__logo-wrapper {
-//         margin-right: 0px;
-//       }
-//     }
-//   }
 @include for-phone-only {
+  .header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
   .header__short-desc {
     display: none;
   }

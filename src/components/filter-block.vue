@@ -1,8 +1,9 @@
 <template>
   <div class="filter-block">
     <div class="filter-block__title-wrapper">
-      <span class="filter-block__rent">Rent </span
-      ><span class="filter-block__whatever">whatever</span>
+      <span class="filter-block__rent"
+        >Rent <span class="filter-block__whatever">whatever</span></span
+      >
       <div class="select">
         <svg display="none">
           <symbol viewBox="0 0 12 8" id="select_arrow">
@@ -81,8 +82,6 @@ export default {
 
   height: 100%;
   cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   opacity: 0;
 }
@@ -94,18 +93,26 @@ export default {
   &__title-wrapper {
     display: flex;
     align-items: center;
-    font-weight: 300;
+    font-weight: 500;
     font-style: normal;
     font-size: 40px;
     width: 50%;
   }
+  &__card-addition {
+    width: 12%;
+    min-width: 151px;
+  }
   &__btn {
     width: 48px;
     background-color: $dark-blue;
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
   }
   &__rent {
     color: $midnight-blue;
-    margin-right: 5%;
+    margin-right: 3%;
   }
   &__whatever {
     color: $blue;
@@ -116,6 +123,9 @@ export default {
   .filter-block__title-wrapper {
     display: flex;
     font-size: 24px;
+  }
+  .filter-block__card-addition {
+    justify-content: flex-end;
   }
   .card-addition__text {
     font-size: 16px;
