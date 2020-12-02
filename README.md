@@ -1,3 +1,3 @@
 # pepelane
 
-https://pepelane-67pq87dvq.vercel.app
+https://pepelane-7zexw4geu.vercel.app/
